@@ -3,11 +3,24 @@
  */
 import React from "react";
 import ReactDOM from "react-dom";
-import Layout from "./components/Layout";
+import {Router, Route, IndexRoute, hashHistory} from "react-router";
+import Archives from "./pages/Archives";
+import Featured from "./pages/Featured";
+import Layout from "./pages/Layout";
+import Settings from "./pages/Settings";
 
 const app = document.getElementById('app');
 
 ReactDOM.render(
-    <Layout/>,
+    <Router history={hashHistory}>
+        <Route path="/" components={Layout}>
+            <IndexRoute components={Featured}>
+            </IndexRoute>
+            <Route path="/archives" components={Archives}>
+            </Route>
+            <Route path="/settings" components={Settings}>
+            </Route>
+        </Route>
+    </Router>,
     app
 );
