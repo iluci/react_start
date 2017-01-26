@@ -4,6 +4,7 @@
 import React from "react";
 import Header from "./Header";
 import Footer from "./Footer";
+import Body from "./Body";
 
 export default class Layout extends React.Component {
     constructor() {
@@ -13,13 +14,15 @@ export default class Layout extends React.Component {
         };
     }
 
+    changeTitle(title) {
+        this.setState({title});
+    }
+
     render() {
-        setTimeout(() => {
-            this.setState({title: "Test"});
-        }, 2000);
         return (
             <div>
                 <Header title={this.state.title}/>
+                <Body changeTitle={this.changeTitle.bind(this)}/>
                 <Footer/>
             </div>
         );
